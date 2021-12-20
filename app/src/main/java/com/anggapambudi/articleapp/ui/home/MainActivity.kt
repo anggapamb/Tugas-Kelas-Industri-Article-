@@ -13,6 +13,8 @@ import com.crocodic.core.base.adapter.CoreListAdapter.Companion.get
 import com.crocodic.core.extension.initLoadMore
 import com.crocodic.core.extension.openActivity
 import com.crocodic.core.helper.list.EndlessScrollListener
+import com.denzcoskun.imageslider.constants.ScaleTypes
+import com.denzcoskun.imageslider.models.SlideModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -67,6 +69,9 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
                 articles.clear()
                 binding.rvArticle.adapter?.notifyDataSetChanged()
                 scrollListener?.resetState()
+
+                //slider
+                initSlider(it.datas)
             }
 
             if (it.datas.isNotEmpty()) {
@@ -94,4 +99,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
         viewModel.listArticle(page = page)
     }
+
+    //add image slider
+    private fun initSlider(data: List<Article?>) {
+        val imageList = ArrayList<SlideModel>()
+        data.forEach {
+            imageList.add(SlideModel(it?.image, it?.title))
+        }
+        binding.ivImageSlider.setImageList(imageList, ScaleTypes.CENTER_CROP)
+    }
+
 }

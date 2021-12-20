@@ -18,6 +18,27 @@
             app:title="Article App"
             app:titleTextColor="@color/white" />
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/iv_image_slider"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:iss_auto_cycle="true"
+                app:iss_period="3000"
+                app:iss_delay="0"
+                app:iss_placeholder="@drawable/placeholder"
+                app:iss_error_image="@drawable/noimage"
+                app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_article"
             android:layout_width="match_parent"

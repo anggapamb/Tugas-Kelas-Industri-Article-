@@ -33,7 +33,23 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
         initView()
         //get data page
         getData()
+        //swipe refresh
+        swipeRefresh()
 
+    }
+
+    private fun swipeRefresh() {
+        binding.swipeRefresh.setOnRefreshListener {
+            articles.clear()
+            //get data article
+            observe()
+            //set in view
+            initView()
+            //get data page
+            getData()
+
+            binding.swipeRefresh.isRefreshing = false
+        }
     }
 
     private fun initView() {
